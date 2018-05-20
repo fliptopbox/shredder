@@ -3,7 +3,6 @@
 import numpy as np
 import cv2
 import random
-import IPython
 import sys
 import getopt
 import re

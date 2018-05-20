@@ -51,7 +51,7 @@ There is none. This is a silly useless script to waste my  ... oh hang on.
 If you answered those question with a majority YES, then you know what this script is good for.
 
 
-## and what is the _"shredder.sh"_ file ... ?
+## ... and what is the _"shredder.sh"_ file ... ?
 
 Ah! yes, you caught me. The bash script was the original solution. 
 
@@ -65,3 +65,8 @@ The disadvantage of the python is the dependencies. It was a bitch to get openCV
 
 
 Looking at the number of lines, bash is the winner. Use which ever you like.
+
+## ... and lastly ... who is the girl?
+
+[Ivana Miño](http://ivanamino.com/) a Spanish actress and an old friend, I helped her create a new website. Say hello.
+
