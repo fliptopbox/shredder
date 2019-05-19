@@ -24,13 +24,13 @@ _Eats perfectly fine images and spits them out as spaghetti. Shredded beyond rec
 
 ## Options
 
-| argument           | type        | def  | comment
-|--------------------|-------------|------|---------------------------------------------|
-| -i, --input=*      | filename    |      | image file name (PNG recommended) 
-| -o, --output=*     | filename    |      | input file name plus "_shredded" suffix
-| -w, --width=*      | int (px)    | 20   | width of the slices
-| -b, --border=*     | int (px)    | 1    | width of the edge border
-| -t, --tint=*       | float (0-1) | 0.9  | 0 = black, 1 = transparent
+| argument       | type        | def  | comment                                 |
+| -------------- | ----------- | ---- | --------------------------------------- |
+| -i, --input=*  | filename    |      | image file name (PNG recommended)       |
+| -o, --output=* | filename    |      | input file name plus "_shredded" suffix |
+| -w, --width=*  | int (px)    | 20   | width of the slices                     |
+| -b, --border=* | int (px)    | 1    | width of the edge border                |
+| -t, --tint=*   | float (0-1) | 0.9  | 0 = black, 1 = transparent              |
 
 ## Dependancies
 
@@ -49,6 +49,43 @@ There is none. This is a silly useless script to waste my  ... oh hang on.
 - Do you need a new rice?
 
 If you answered those question with a majority YES, then you know what this script is good for.
+
+
+
+## Use with the i3lock (on Manjaro i3)
+
+First install all the python dependencies as global modules `sudo pip3 install numpy opencv-python` then copy `shredder.py` to the `/usr/bin/`directory, using sudo so that the script has execute permission.
+
+Finally open `/usr/bin/blurlock` and make it look like this ... (I have kept the original code in comments) 
+
+
+
+```bash
+#!/bin/bash
+# /usr/bin/blurlock
+
+# take screenshot
+import -window root /tmp/screenshot.png
+
+# blur it
+# convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+# rm /tmp/screenshot.png
+
+# shredder it ... :D - output: screenshot_shredded.png 
+python shredder.py -i /tmp/screenshot.png -w 20 -b 2 -t 0.85
+rm /tmp/screenshot.png
+
+# lock the screen
+# i3lock -i /tmp/screenshotblur.png
+i3lock -i /tmp/screenshot_shredded.png
+
+# sleep 1 adds a small delay to prevent possible race conditions with suspend
+sleep 1
+
+exit 0
+```
+
+
 
 
 ## ... and what is the _"shredder.sh"_ file ... ?
