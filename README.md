@@ -34,9 +34,9 @@ _Eats perfectly fine images and spits them out as spaghetti. Shredded beyond rec
 
 ## Dependancies
 
-- Python3
-- OpenCV v3
-- Numpy
+- Python3 - v3.6+
+- OpenCV - v4.2.0-2 - Arch AUR: `yay -Syu opencv` 
+- Numpy - v1.18.2 +
 
 
 ## Usefull application ... Anyone?
