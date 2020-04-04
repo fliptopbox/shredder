@@ -59,30 +59,28 @@ First install all the python dependencies as global modules `sudo pip3 install n
 Finally open `/usr/bin/blurlock` and make it look like this ... (I have kept the original code in comments) 
 
 
-
 ```bash
+
 #!/bin/bash
+
+# on Manjaro (Arch) this file lives in ...
 # /usr/bin/blurlock
 
-# take screenshot
+# The import program is a member of the ImageMagick(1) suite of tools.
 import -window root /tmp/screenshot.png
 
-# blur it
-# convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
-# rm /tmp/screenshot.png
+# Shredder it ... :D - /usr/bin/shredder.py requires execute permission
+python /usr/bin/shredder.py -i /tmp/screenshot.png -w 80 -b 4 -t 0.85 
 
-# shredder it ... :D - output: screenshot_shredded.png 
-python shredder.py -i /tmp/screenshot.png -w 20 -b 2 -t 0.85
-rm /tmp/screenshot.png
-
-# lock the screen
-# i3lock -i /tmp/screenshotblur.png
+# Lock the screen using the new image
 i3lock -i /tmp/screenshot_shredded.png
 
-# sleep 1 adds a small delay to prevent possible race conditions with suspend
+# Sleep 1 adds a small delay to prevent possible race conditions with suspend
 sleep 1
 
 exit 0
+
+
 ```
 
 

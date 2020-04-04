@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# on Manjaro (Arch) this file lives in ...
+# /usr/bin/blurlock
+
+# The import program is a member of the ImageMagick(1) suite of tools.
+import -window root /tmp/screenshot.png
+
+# Shredder it ... :D - /usr/bin/shredder.py requires execute permission
+python /usr/bin/shredder.py -i /tmp/screenshot.png -w 80 -b 4 -t 0.85 
+
+# Lock the screen using the new image
+i3lock -i /tmp/screenshot_shredded.png
+
+# Sleep 1 adds a small delay to prevent possible race conditions with suspend
+sleep 1
+
+exit 0
